@@ -1,6 +1,7 @@
 # coding=utf-8
 import json
 from os.path import join, dirname
+import string
 from watson_developer_cloud import DocumentConversionV1, TextToSpeechV1
 
 
@@ -20,17 +21,21 @@ config = {'conversion_target': DocumentConversionV1.ANSWER_UNITS}
 
 #
 # Example with JSON
-with open(join(dirname(__file__), '../resources/tigers.pdf'), 'r') as document:
+with open(join(dirname(__file__), './tigers.pdf'), 'r') as document:
     config['conversion_target'] = DocumentConversionV1.ANSWER_UNITS
     #print(json.dumps(document_conversion.convert_document(document=document, config=config), indent=2))
     hello = document_conversion.convert_document(document=document, config=config)
     print hello["answer_units"][0]["content"][0]["text"]
     hello2 = hello["answer_units"][0]["content"][0]["text"]
-with open(join(dirname(__file__), '../resources/rawText.txt'), 'w+') as odoc:
-    odoc.write(hello2)
-    odoc.close()
+    printable = set(string.printable)
+    hello2 = filter(lambda x: x in printable, hello2)
+    #unicodedata.normalize( 'NFC', hello2).encode('ascii','ignore')
+    print hello2
+with open(join(dirname(__file__), './rawText.txt'), 'w+') as odoc:
+        odoc.write(hello2)
+        odoc.close()
 
 
 
-with open(join(dirname(__file__), '../resources/output.wav'), 'wb') as audio_file:
+with open(join(dirname(__file__), './output.wav'), 'wb') as audio_file:
     audio_file.write(text_to_speech.synthesize(text=hello2, accept='audio/wav', voice="en-US_AllisonVoice"))
