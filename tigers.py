@@ -37,7 +37,9 @@ with open(join(dirname(__file__), './gsfinal.pdf'), 'r') as document:
     #unicodedata.normalize( 'NFC', hello2).encode('ascii','ignore')
     #print hello2
 with open(join(dirname(__file__), './rawText.txt'), 'w+') as odoc:
+        odoc.write(" ")
         odoc.write(hello2)
+        odoc.write("\n")
         odoc.close()
 
 
