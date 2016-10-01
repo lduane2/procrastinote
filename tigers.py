@@ -21,7 +21,7 @@ config = {'conversion_target': DocumentConversionV1.ANSWER_UNITS}
 
 #
 # Example with JSON
-with open(join(dirname(__file__), './tigersremake.pdf'), 'r') as document:
+with open(join(dirname(__file__), './tigers.pdf'), 'r') as document:
     config['conversion_target'] = DocumentConversionV1.ANSWER_UNITS
     #print(json.dumps(document_conversion.convert_document(document=document, config=config), indent=2))
     hello = document_conversion.convert_document(document=document, config=config)
@@ -29,6 +29,7 @@ with open(join(dirname(__file__), './tigersremake.pdf'), 'r') as document:
     hello2 = hello["answer_units"][0]["content"][0]["text"]
     printable = set(string.printable)
     hello2 = filter(lambda x: x in printable, hello2)
+    hello2 = hello2.replace("\n", "\n\n")
     hello2 = hello2.replace(".", "\n")
     #unicodedata.normalize( 'NFC', hello2).encode('ascii','ignore')
     print hello2
