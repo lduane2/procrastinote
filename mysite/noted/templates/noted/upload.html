@@ -1,9 +1,12 @@
 <div w3-include-html="noted/header.html"></div>
 
-<form action="{% url "list" %}" method="post" enctype="multipart/form-data">
+<form action="/noted/upload/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>File Name: <input type="text" name="filename" size="50"></p>
-    <p><input type="file" name="uploadedfile" /></p>
+    <p>
+        <label for="file_name">File Name</label>
+        <input type="text" id="file_name" size="50">
+    </p>
+    <p><input type="file" id="file_contents"/></p>
     <p><input type="submit" value="Upload"/></p>
 </form>
 

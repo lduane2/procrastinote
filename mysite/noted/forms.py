@@ -1,9 +1,8 @@
 from django import forms
 from django.utils import timezone
 
-class ModelFormWithFileField(forms.Form):
-    title = forms.CharField(max_length=50)
-    date = forms.DateTimeField(timezone.now())
-    upload = forms.FileField()
+class FileForm(forms.Form):
+    file_name = forms.CharField(max_length=200)
+    upload_date = forms.DateTimeField(timezone.now())
+    file_contents = forms.FileField()
     #data above accessible by request.FILES['file']
-
