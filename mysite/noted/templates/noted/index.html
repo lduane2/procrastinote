@@ -1,0 +1,9 @@
+{% if latest_uploads_list %}
+    <ul>
+    {% for upload in latest_uploads_list %}
+        <li><a href="{% url 'noted:detail' upload.id %}">{{ upload.file_name }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No files have been uploaded!</p>
+{% endif %}
