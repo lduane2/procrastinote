@@ -8,20 +8,24 @@ pmode = 0
 smart = 1
 topp = 0
 currentp = ""
-currline = 1
+currline = 2
 line2 = ""
+count = 0
 f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
 with open(join(dirname(__file__), './rawText.txt'), 'r') as document:
 	if(autosum):
 		for lines in document:
-			if(currline == 2):
-				f1.write(lines)
-				currline = 0
-			if(len(lines) == 2):
-				f1.write(line2)
-				f1.write('\n')
-				currline = 1
-			line2 = lines
+			if(count != 0):
+				if(currline == 2):
+					f1.write(lines)
+					currline = 0
+				if(len(lines) == 2):
+					f1.write(line2)
+					f1.write('\n')
+					currline = 2
+				line2 = lines
+			else:
+				count = 1
 			
 	if (pmode != 0):
 		for lines in document:
