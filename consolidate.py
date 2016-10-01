@@ -9,12 +9,14 @@ with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
     if (pmode):
     	currentp = ""
     	for lines in document:
-			if(len(lines) == 0):
+			if(len(lines) == 1):
+				print currentp
 				if(currentp.find(keyWord) != 1):
 					f1.write(currentp)
 				
 			else:
 				currentp += lines
+				#print lines
 			currentp = ""
 	else:	
 		for lines in document:

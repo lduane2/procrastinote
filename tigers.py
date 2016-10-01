@@ -21,7 +21,7 @@ config = {'conversion_target': DocumentConversionV1.ANSWER_UNITS}
 
 #
 # Example with JSON
-with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
+with open(join(dirname(__file__), './tigers.pdf'), 'r') as document:
     config['conversion_target'] = DocumentConversionV1.ANSWER_UNITS
     #print(json.dumps(document_conversion.convert_document(document=document, config=config), indent=2))
     hello = document_conversion.convert_document(document=document, config=config)
