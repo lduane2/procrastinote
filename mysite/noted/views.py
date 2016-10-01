@@ -25,6 +25,7 @@ def upload_file(request):
 		if form.is_valid():
 			form.save()
 			#handle_uploaded_file(request.FILES['file'])
+			#my_model.save()
 			return HttpResponseRedirect('noted/')
 		else:
 			form = ModelFormWithFileField()
