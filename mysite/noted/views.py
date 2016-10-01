@@ -9,15 +9,22 @@ from .forms import ModelForm
 from .models import UploadedFile
 
 def index(request):
-    latest_uploads_list = UploadedFile.objects.order_by('-upload_date')[:5]
+    uploads_list = UploadedFile.objects.order_by('-upload_date')
     context = {
-            'latest_uploads_list': latest_uploads_list,
+            'uploads_list': uploads_list,
             }
     return render(request, 'noted/index.html', context)
 
 def detail(request,upload_id):
     upload = get_object_or_404(UploadedFile, pk=upload_id)
     return render(request, 'noted/detail.html', {'upload': upload})
+
+def list(request):
+    uploads_list = UploadedFile.objects.order_by('-upload_date')
+    context = {
+            'uploads_list': uploads_list,
+            }
+    return render(request, 'noted/list.html', context)
 
 def upload_file(request):
     if request.method == 'POST':

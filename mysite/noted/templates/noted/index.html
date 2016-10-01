@@ -1,29 +1,16 @@
 {% extends "_layouts/base.html" %}
-{% block css %}
-{{block.super}}
-<style>
-    body {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
-</style>
-{% endblock css %}
 
 {% block page_title %}Home{% endblock %}
 {% block page_class %}home-page{% endblock %}
 
 {% block header %}
-<h1> Noted </h1>
+    <div class="jumbotron">
+        <h1>Noted</h1>
+        <p><h2><small>Upload your files and hear them aloud.</small></h2></p>
+    </div>
 {% endblock %}
 
 {% block content %}
-
-    {% if latest_uploads_list %}
-        <ul>
-        {% for upload in latest_uploads_list %}
-            <li><a href="{% url 'noted:detail' upload.id %}">{{ upload.file_name }}</a></li>
-        {% endfor %}
-        </ul>
-    {% endif %}
-
+    <li><a href="/noted/list/">List Files</li>
+    <li><a href="/noted/upload/">Upload a File</a></li>
 {% endblock %}

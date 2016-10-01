@@ -17,60 +17,66 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
         {% endblock cdn_css %}
 
-        <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}">
-        {% block css %}{% endblock %}
+        {% block css %}
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+        <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+        {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
     {% block body %}
-            <nav class="navbar navbar-default navbar-fixed-top">
-                <div class="container">
-                    <!-- toggle grouped (for mobile display) -->
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <i class="fa fa-bars"></i>
-                        </button>
-                        <!-- page icon -->
-                        <a class="navbar-brand" data-scroll href="index.html">
-                            <i class="fa fa-home"></i>
-                        </a>
-                    </div>
-
-                    <!-- links -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="page-scroll">
-                                <a data-scroll href="#about">About</a>
-                            <li>
-                            <li class="page-scroll">
-                                <a data-scroll href="#update">Update</a>
-                            <li>
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <!-- toggle grouped (for mobile display) -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars"></i>
+                    </button>
+                    <!-- page icon -->
+                    <a class="navbar-brand" data-scroll href="/noted/">
+                        <i class="fa fa-home"></i>
+                    </a>
                 </div>
-            </nav>
+
+                <!-- links -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/noted/list/">List Files</a></li>
+                        <li><a href="/noted/upload/">Upload a File</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <img class="fit" src="{% static 'img/background.png' %}" alt="background"/>
         <header>
             {% block header %}{% endblock %}
         </header>
-        <div role="main"> {% block content %}{% endblock %} </div>
-<!--
+
+        <section>
+            <div class="container">
+                {% block content %}{% endblock %}
+            </div>
+        </section>
+
         <footer>
-            {% block footer %}
             <div class="container">
                 <hr>
                 <p>&copy; Noted 2016</p>
-            </div> {% endblock footer %}
+            </div>
+            {% block footer %}{% endblock footer %}
         </footer>
--->
 
-        {% block cdn_js %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-2.1.1.min.js"><\/script>')</script>
+        {% block cdn_js %}
         {% endblock cdn_js %}
-        {% block js %}
+
         <script src="{% static 'js/bootstrap.min.js' %}"></script>
         <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+        {% block js %}
         {% endblock js %}
+
         <script>
             var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
