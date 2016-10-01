@@ -1,13 +1,28 @@
-<div w3-include-html="noted/header.html"></div>
+{% extends "_layouts/base.html" %}
+{% block css %}
+{{block.super}}
+<style>
+    body {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+</style>
+{% endblock css %}
+
+
+{% block page_title %}Noted - Home{% endblock %}
+{% block page_class %}home-page{% endblock %}
+
+{% block content %}
 
 <form action="/noted/upload/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <p>
         <label for="file_name">File Name</label>
-        <input type="text" id="file_name" size="50">
+        <input type="text" name="name" size="50">
     </p>
-    <p><input type="file" id="file_contents"/></p>
+    <p><input type="file" name="contents"/></p>
     <p><input type="submit" value="Upload"/></p>
 </form>
 
-<div w3-include-html="noted/footer.html"></div>
+{% endblock %}
