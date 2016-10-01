@@ -9,14 +9,15 @@ smart = 1
 topp = 0
 currentp = ""
 currline = 1
+line2 = ""
 f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
-with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
+with open(join(dirname(__file__), './rawText.txt'), 'r') as document:
 	if(autosum):
 		for lines in document:
-			if(currline == 1):
+			if(currline == 2):
 				f1.write(lines)
 				currline = 0
-			if(len(lines) == 1):
+			if(len(lines) == 2):
 				f1.write(line2)
 				f1.write('\n')
 				currline = 1
@@ -39,7 +40,7 @@ with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
 		if(smart):
 			for lines in document:
 				if(topp == 3):
-					if(len(lines) == 1):
+					if(len(lines) == 2):
 						topp = 0
 					else:
 						f1.write(lines)
