@@ -1,0 +1,82 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+        <title>{% block page_title %}{{ _("Noted") }}{% endblock %}</title>
+
+        <meta name="description" content="{% block meta_description %}{% endblock %}">
+        <meta name="author" content="{% block meta_author %}{% endblock %}">
+        <meta name="viewport" content="width=device-width">
+        {% block meta %}
+        {% endblock %}
+
+        {% block cdn_css %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+        {% endblock cdn_css %}
+
+        <link rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}">
+        {% block css %}{% endblock %}
+    </head>
+    <body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
+    {% block body %}
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <!-- toggle grouped (for mobile display) -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <!-- page icon -->
+                        <a class="navbar-brand" data-scroll href="index.html">
+                            <i class="fa fa-home"></i>
+                        </a>
+                    </div>
+
+                    <!-- links -->
+                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="page-scroll">
+                                <a data-scroll href="#about">About</a>
+                            <li>
+                            <li class="page-scroll">
+                                <a data-scroll href="#update">Update</a>
+                            <li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+        <div role="main"> {% block content %}{% endblock %} </div>
+<!--
+        <footer>
+            {% block footer %}
+            <div class="container">
+                <hr>
+                <p>&copy; Noted 2016</p>
+            </div> {% endblock footer %}
+        </footer>
+-->
+
+        {% block cdn_js %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-2.1.1.min.js"><\/script>')</script>
+        {% endblock cdn_js %}
+        {% block js %}
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/smooth-scroll.min.js' %}"></script>
+        {% endblock js %}
+        <script>
+            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));
+        </script>
+    {% endblock %}
+    </body>
+</html>

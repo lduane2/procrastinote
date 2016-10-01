@@ -1,11 +1,29 @@
-<div w3-include-html="noted/header.html"></div>
+{% extends "_layouts/base.html" %}
+{% block css %}
+{{block.super}}
+<style>
+    body {
+      padding-top: 50px;
+      padding-bottom: 20px;
+    }
+</style>
+{% endblock css %}
 
-{% if latest_uploads_list %}
-    <ul>
-    {% for upload in latest_uploads_list %}
-        <li><a href="{% url 'noted:detail' upload.id %}">{{ upload.file_name }}</a></li>
-    {% endfor %}
-    </ul>
-{% endif %}
+{% block page_title %}Home{% endblock %}
+{% block page_class %}home-page{% endblock %}
 
-<div w3-include-html="noted/footer.html"></div>
+{% block header %}
+<h1> Noted </h1>
+{% endblock %}
+
+{% block content %}
+
+    {% if latest_uploads_list %}
+        <ul>
+        {% for upload in latest_uploads_list %}
+            <li><a href="{% url 'noted:detail' upload.id %}">{{ upload.file_name }}</a></li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+{% endblock %}
