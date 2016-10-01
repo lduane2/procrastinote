@@ -23,26 +23,14 @@ config = {'conversion_target': DocumentConversionV1.ANSWER_UNITS}
 # Example with JSON
 with open(join(dirname(__file__), './gsfinal.pdf'), 'r') as document:
     config['conversion_target'] = DocumentConversionV1.ANSWER_UNITS
-    #print(json.dumps(document_conversion.convert_document(document=document, config=config), indent=2))
     hello = document_conversion.convert_document(document=document, config=config)
-    print hello
-    #print hello["answer_units"][0]["content"][0]["text"]
     hello2 = hello["answer_units"][0]["content"][0]["text"]
-    print hello2
     printable = set(string.printable)
     hello2 = filter(lambda x: x in printable, hello2)
     hello2 = hello2.replace("*", "\n")
-    print hello2
     hello2 = hello2.replace(".", "\n")
-    #unicodedata.normalize( 'NFC', hello2).encode('ascii','ignore')
-    #print hello2
 with open(join(dirname(__file__), './rawText.txt'), 'w+') as odoc:
         odoc.write(" ")
         odoc.write(hello2)
         odoc.write(" \n")
         odoc.close()
-
-
-
-#with open(join(dirname(__file__), './output.wav'), 'wb') as audio_file:
-#    audio_file.write(text_to_speech.synthesize(text=hello2, accept='audio/wav', voice="en-US_AllisonVoice"))
