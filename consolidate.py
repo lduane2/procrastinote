@@ -10,14 +10,16 @@ with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
     	currentp = ""
     	for lines in document:
 			if(len(lines) == 1):
-				print currentp
-				if(currentp.find(keyWord) != 1):
+				#print currentp
+				if(currentp.find(keyWord) != -1):
+					print keyWord
 					f1.write(currentp)
+				currentp = ""
 				
 			else:
 				currentp += lines
 				#print lines
-			currentp = ""
+			#currentp = ""
 	else:	
 		for lines in document:
 		    if (lines.find(keyWord) != -1):
