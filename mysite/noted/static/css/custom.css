@@ -1,0 +1,9 @@
+.fit {
+    max-width: 100%;
+    margin: auto;
+    display: block;
+}
+
+section .container {
+    padding-top: 75px;
+}
