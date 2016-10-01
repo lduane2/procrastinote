@@ -22,10 +22,16 @@ def detail(request,upload_id):
 def upload_file(request):
 	if request.method == 'POST':
 		form = ModelFormWithFileField(request.POST, request.FILES)
-		if form.is_valid():
-			form.save()
+		try:
+            newupload = UploadedFile(
+                file_name=request.POST['filename'],
+                upload_date=timezone.now(),
+                file_contents=request.POST['uploadedfile']
+            )
+			newupload.save()
 			#handle_uploaded_file(request.FILES['file'])
+			#my_model.save()
 			return HttpResponseRedirect('noted/')
-		else:
-			form = ModelFormWithFileField()
+		except:
+            form = ModelFormWithFileField()
 		return render(request, 'upload.html', {'form': form})
