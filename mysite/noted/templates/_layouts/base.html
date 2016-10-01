@@ -13,13 +13,13 @@
         {% block meta %}
         {% endblock %}
 
-        {% block cdn_css %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
+        {% block cdn_css %}
         {% endblock cdn_css %}
 
-        {% block css %}
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
+        {% block css %}
         {% endblock %}
     </head>
     <body class="{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
@@ -48,8 +48,12 @@
             </div>
         </nav>
 
-        <img class="fit" src="{% static 'img/background.png' %}" alt="background"/>
         <header>
+            <img class="fit" src="{% static 'img/background.png' %}" alt="background"/>
+            <div class="jumbotron">
+                <h2>{% block jumbotron_name %}{% endblock %}</h2>
+                <p><h4><small>{% block jumbotron_description %}{% endblock %}</small></h4></p>
+            </div>
             {% block header %}{% endblock %}
         </header>
 

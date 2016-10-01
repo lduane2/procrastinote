@@ -1,9 +1,14 @@
 .fit {
     max-width: 100%;
+    max-height: 500px;
     margin: auto;
     display: block;
 }
 
-section .container {
-    padding-top: 50px;
+header {
+    background-color: #eee;
+}
+
+.jumbotron {
+    max-height: 200px;
 }

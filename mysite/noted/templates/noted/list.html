@@ -3,18 +3,20 @@
 {% block page_title %}Home{% endblock %}
 {% block page_class %}home-page{% endblock %}
 
-{% block header %}
-    <div class="jumbotron">
-        <h1>Noted</h1>
-        <p><h2><small>Upload your files and hear them aloud.</small></h2></p>
-    </div>
+{% block css %}
+<style>
+tr { cursor: pointer; }
+</style>
 {% endblock %}
 
+{% block jumbotron_name %}List{% endblock %}
+{% block jumbotron_description %}All the currently uploaded files.{% endblock %}
+
 {% block content %}
-    <table class="table table-hover" class='clickable-row' data-href='url://'>
+    <table class="table table-hover" class="clickable-row" data-href="url://">
         {% if uploads_list %}
             {% for upload in uploads_list %}
-                <tr class='clickable-row' data-href="{% url 'noted:detail' upload.id %}">
+                <tr onClick="location.href='{% url 'noted:detail' upload.id %}'">
                     <th>{{ upload.file_name }}</th>
                 </tr>
             {% endfor %}
