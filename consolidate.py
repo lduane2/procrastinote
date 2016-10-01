@@ -4,7 +4,7 @@ import string
 import sys
 keyWord = "nonphysical"
 pmode = 0
-smart = 0
+smart = 1
 topp = 0
 currentp = ""
 f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
@@ -31,7 +31,7 @@ with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
 					else:
 						f1.write(lines)
 				if(topp == 1):
-					if(lines.find(keyword) != 1):
+					if(lines.find(keyWord) != -1):
 						topp = 3
 					else:
 						
