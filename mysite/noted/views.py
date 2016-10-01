@@ -12,8 +12,11 @@ def index(request):
     context = {
         'latest_uploads_list': latest_uploads_list,
     }
-    return render(request, 'noted/index.html',context)
+    return render(request, 'noted/index.html', context)
 
 def detail(request,upload_id):
-    f = get_object_or_404(File, pk=upload_id)
-    return render(request, 'noted/detail.html', {'upload': upload})
+    uf = get_object_or_404(File, pk=upload_id)
+    return render(request, 'noted/detail.html', {'upload': uf})
+
+def upload(request):
+    context = {}
