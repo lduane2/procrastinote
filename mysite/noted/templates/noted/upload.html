@@ -17,11 +17,9 @@
 
 <form action="/noted/upload/" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <p>
-        <label for="file_name">File Name</label>
-        <input type="text" name="name" size="50">
-    </p>
-    <p><input type="file" name="contents"/></p>
+    <p>{{ form }}</p>
+
+
     <p><input type="submit" value="Upload"/></p>
 </form>
 
