@@ -2,13 +2,31 @@
 from os.path import join, dirname
 import string
 import sys
-keyWord = "nonphysical"
+keyWord = "view"
+autosum = 1
 pmode = 0
 smart = 1
 topp = 0
 currentp = ""
+currline = 2
+line2 = ""
+count = 0
 f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
-with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
+with open(join(dirname(__file__), './rawText.txt'), 'r') as document:
+	if(autosum):
+		for lines in document:
+			if(count != 0):
+				if(currline == 2):
+					f1.write(lines)
+					currline = 0
+				if(len(lines) == 2):
+					f1.write(line2)
+					f1.write('\n')
+					currline = 2
+				line2 = lines
+			else:
+				count = 1
+			
 	if (pmode != 0):
 		for lines in document:
 			if(len(lines) == 1):
@@ -26,7 +44,7 @@ with open(join(dirname(__file__), './dualism.txt'), 'r') as document:
 		if(smart):
 			for lines in document:
 				if(topp == 3):
-					if(len(lines) == 1):
+					if(len(lines) == 2):
 						topp = 0
 					else:
 						f1.write(lines)
