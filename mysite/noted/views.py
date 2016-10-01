@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404, render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
+from django.utils import timezone
 
 import re
 import json
@@ -15,7 +16,6 @@ from .forms import ModelForm
 from .models import UploadedFile
 
 from django.utils import timezone
-
 
 document_conversion = DocumentConversionV1(
                                            username='632d20d2-21d6-4b72-b1e4-35409db12fe3',
@@ -58,10 +58,11 @@ def upload_file(request):
     if request.method == 'POST':
         form = ModelForm(request.POST)
         if form.is_valid():
-            form.upload_date = timezone.now()
-            print form['file_name']
-            form.save()
-            return HttpResponseRedirect('noted/list/')
+            print form
+            post = form.save(commit=False)
+            post.upload_date = timezone.now()
+            post.save()
+            return HttpResponse('noted/list.html', pk=post.pk)
     else:
         form = ModelForm()
-    return render(request, 'noted/upload.html', {'form': form})
+    return render(request, 'noted/upload.html',{ 'form': form })
