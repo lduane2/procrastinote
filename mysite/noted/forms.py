@@ -9,4 +9,3 @@ class UploadFileForm(forms.ModelForm):
         exclude = ['upload_date','file_path','folder']
     file_name = forms.CharField(max_length=200)
     file_contents = forms.FileField()
-    
