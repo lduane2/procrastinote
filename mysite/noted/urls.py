@@ -6,9 +6,8 @@ from . import views
 
 app_name = 'noted'
 urlpatterns = [
-        url(r'^$', views.index, name='index'),
-        url(r'^list/$', views.list, name='list'),
-        url(r'^(?P<upload_id>[0-9]+)/$', views.detail, name='detail'),
-        url(r'^upload/$', views.upload_file, name='upload'),
-        ]
-urlpatterns+=static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    url(r'^$', views.index, name='index'),
+    url(r'^list/$', views.list, name='list'),
+    url(r'^(?P<upload_id>[0-9]+)/$', views.detail, name='detail'),
+    url(r'^upload/$', views.upload_file, name='upload'),
+]

@@ -76,8 +76,7 @@ def detail(request,upload_id):
                 contents=document.read().replace('\n', '')
 
             if request.POST.get("audio",""):
-                wavstr = uf[0].folder
-                wavstr = wavstr.split('/')[-2] + '.wav'
+                wavstr = uf[0].stored_name+'.wav'
                 speak(filename=wavstr)
 
     else:
@@ -97,11 +96,7 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
-<<<<<<< HEAD
     return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
-=======
-    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavfile': wavstr} )
->>>>>>> 22c10242cc063bf0dd13603384e926a73690e40e
 
 def upload_file(request):
     if request.method == 'POST':

@@ -12,13 +12,13 @@
         <meta name="viewport" content="width=device-width">
         {% block meta %}
         {% endblock %}
+        <link rel="icon" type="image/ico" sizes="32x32" href="{% static 'img/favicon.ico' %}">
 
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.2.0/css/bootstrap.min.css">
         {% block cdn_css %}
         {% endblock cdn_css %}
 
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         {% block css %}
         {% endblock %}
