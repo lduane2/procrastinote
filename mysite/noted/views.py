@@ -96,7 +96,7 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
-    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
+    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavfile': wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
