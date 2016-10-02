@@ -3,14 +3,16 @@
 {% block page_title %}Home{% endblock %}
 {% block page_class %}home-page{% endblock %}
 
-{% block header %}
-    <div class="jumbotron">
-        <h1>Noted</h1>
-        <p><h2><small>Upload your files and hear them aloud.</small></h2></p>
-    </div>
-{% endblock %}
+{% block jumbotron_name %}Noted{% endblock %}
+{% block jumbotron_description %}Upload your files and hear them aloud.{% endblock %}
 
 {% block content %}
-    <li><a href="/noted/list/">List Files</li>
-    <li><a href="/noted/upload/">Upload a File</a></li>
+    <div class="btn-group btn-group-justified" role="group" aria-label="...">
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onClick="location.href='/noted/list/'">List Files</button>
+        </div>
+        <div class="btn-group" role="group">
+            <button type="button" class="btn btn-default" onClick="location.href='/noted/upload/'">Upload a File</button>
+        </div>
+    </div>
 {% endblock %}

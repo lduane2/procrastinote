@@ -1,26 +1,33 @@
 {% extends "_layouts/base.html" %}
-{% block css %}
-{{block.super}}
-<style>
-    body {
-      padding-top: 50px;
-      padding-bottom: 20px;
-    }
-</style>
-{% endblock css %}
 
+{% block page_title %}Upload{% endblock %}
+{% block page_class %}upload{% endblock %}
 
-{% block page_title %}Noted - Home{% endblock %}
-{% block page_class %}home-page{% endblock %}
+{% block jumbotron_name %}Upload{% endblock %}
+{% block jumbotron_description %}Upload a PDF file.{% endblock %}
 
 {% block content %}
 
-<form action="/noted/upload/" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>{{ form }}</p>
-
-
-    <p><input type="submit" value="Upload"/></p>
-</form>
+<div class="container">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group row">
+            <label for="id_file_name" class="col-sm-2 col-form-label">File Name:</label>
+            <div class="col-sm-10">
+                <input id="id_file_name" maxlength="200" name="file_name" type="text" class="form-control" placeholder="Example: MyFile" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="id_file_contents" class="col-sm-2 col-form-label">File Contents:</label>
+            <div class="col-sm-10">
+                <input id="id_file_contents" name="file_contents" type="file" required/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 {% endblock %}
