@@ -2,4 +2,5 @@
 *.txt
 *.pdf
 *.wav
-
+mysite/db.sqlite3
+mysite/noted/migrations/*_initial.py
