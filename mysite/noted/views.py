@@ -58,9 +58,9 @@ def detail(request,upload_id):
         keyconcepts()
         #os.system("keyconcepts.py")
         fileText = 'something'
-        f1 = open('./concepts', 'r')
+        '''f1 = open('./concepts', 'r')
         for line in f1:
-            fileText += line
+            fileText += line'''
 
     return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
 
