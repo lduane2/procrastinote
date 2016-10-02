@@ -17,6 +17,10 @@ def file_path(instance,filename):
     instance.file_path = instance.folder+store_name+'.pdf'
     return instance.file_path
 
+class Song(models.Model):
+    name = models.CharField(max_length=100)
+    audio_file = models.FileField()
+
 class UploadedFile(models.Model):
     file_name = models.CharField(max_length=200)
     upload_date = models.DateTimeField(timezone.now())
