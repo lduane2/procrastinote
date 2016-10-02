@@ -37,21 +37,19 @@ def list(request):
     return render(request, 'noted/list.html', context)
 
 def detail(request,upload_id):
-    name_map = { 'name': 'file_name', 'date': 'upload_date' }
-    results = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE ID='+upload_id,translations=name_map)
-    tmp = results['date']
-    str(tmp)
-    tmp = tmp.strftime('%Y-%m-%dT%H:%M:%S')
-    path = 'noted/uploads/'+results['name']+'_'+tmp+'.pdf';
-    print('YA PATH')
-    print(path)
-
-    upload = get_object_or_404(UploadedFile, pk=upload_id)
-    with open('noted/uploads/Fall_2016_Resume.pdf', 'r') as document:
-        config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
-        response = document_conversion.convert_document(document=document, config=config).content
-        m = re.search('<body>(.*)</body>', response)
-        found = m.group(1)
+    if request.method == 'POST':
+        print "posted"
+    else:
+        uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
+        upload = get_object_or_404(UploadedFile, pk=upload_id)
+        with open(uf[0].file_path, 'r+') as document:
+            config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
+            response = document_conversion.convert_document(document=document, config=config).content
+            try:
+                m = re.search('<body>(.*)</body>', response)
+                found = m.group(1)
+            except:
+                found = response
     return render(request, 'noted/detail.html', {'found': found, 'upload': upload} )
 
 def upload_file(request):

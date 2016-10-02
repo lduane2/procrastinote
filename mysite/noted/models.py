@@ -9,21 +9,18 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
 
 def file_path(instance,filename):
-    tmp = instance.upload_date
-    str(tmp)
-    tmp = tmp.strftime('%Y-%m-%dT%H:%M:%S')
-    print('T IS BELOW')
-    print(tmp)
-    #print(type(tmp))
-    path = 'noted/uploads/'+instance.file_name+'_'+tmp+'.pdf';
-    print('PATH BELOW')
-    print(path)
+    date = instance.upload_date
+    str(date)
+    date = date.strftime('%Y-%m-%dT%H%M%S')
+    path = 'noted/uploads/'+instance.file_name.replace (" ","_")+'_'+date+'.pdf';
+    instance.file_path = path
     return path
 
 class UploadedFile(models.Model):
     file_name = models.CharField(max_length=200)
-    upload_date = models.DateTimeField('date uploaded')
+    upload_date = models.DateTimeField(timezone.now())
     file_contents = models.FileField(upload_to=file_path)
+    file_path = models.CharField(max_length=300)
 
     def __str__(self):
         return self.file_name
