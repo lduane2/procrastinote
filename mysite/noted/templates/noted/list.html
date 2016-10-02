@@ -13,15 +13,15 @@ tr { cursor: pointer; }
 {% block jumbotron_description %}All the currently uploaded files.{% endblock %}
 
 {% block content %}
-    <table class="table table-hover" class="clickable-row" data-href="url://">
+    <div class="list-group">
         {% if uploads_list %}
-            {% for upload in uploads_list %}
-                <tr onClick="location.href='{% url 'noted:detail' upload.id %}'">
-                    <th>{{ upload.file_name }}</th>
-                </tr>
-            {% endfor %}
+        {% for upload in uploads_list %}
+            <a class="list-group-item" href="{% url 'noted:detail' upload.id %}">
+                {{ upload.file_name }}
+            </a>
+        {% endfor %}
         {% endif %}
-    </table>
+    </div>
 {% endblock %}
 
 {% block js %}

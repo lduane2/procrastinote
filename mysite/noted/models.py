@@ -26,5 +26,3 @@ class UploadedFile(models.Model):
 
     def __str__(self):
         return self.file_name
-    def was_uploaded_recently(self):
-        return self.upload_date >= timezone.now() - datetime.timedelta(days=7)

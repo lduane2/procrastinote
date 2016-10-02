@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.utils import timezone
@@ -12,7 +12,7 @@ import os
 from os.path import join, dirname
 from watson_developer_cloud import DocumentConversionV1
 
-from .forms import ModelForm
+from .forms import UploadFileForm
 from .models import UploadedFile
 
 from .pythonScripts.tigersOO import tigers
@@ -22,9 +22,9 @@ from .pythonScripts.keyconceptsOO import keyconcepts
 from django.utils import timezone
 
 document_conversion = DocumentConversionV1(
-                                           username='632d20d2-21d6-4b72-b1e4-35409db12fe3',
-                                           password='nB2m1r40gUIi',
-                                           version='2016-02-09')
+        username='632d20d2-21d6-4b72-b1e4-35409db12fe3',
+        password='nB2m1r40gUIi',
+        version='2016-02-09')
 
 def index(request):
     uploads_list = UploadedFile.objects.order_by('-upload_date')
@@ -54,30 +54,29 @@ def detail(request,upload_id):
                 found = m.group(1)
             except:
                 found = response
-        print ('SHIT')
-        print uf[0].file_path  
-
         tigers(filename=uf[0].file_path)
         keyconcepts()
         #os.system("keyconcepts.py")
         fileText = 'something'
         f1 = open('./concepts', 'r')
         for line in f1:
-        	fileText += line
-        
+            fileText += line
+
     return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
 
 def upload_file(request):
     if request.method == 'POST':
-        form = ModelForm(request.POST)
+        form = UploadFileForm(request.POST,request.FILES)
         if form.is_valid():
-            print form
+            print "Valid form :)"
             post = form.save(commit=False)
             post.upload_date = timezone.now()
             post.save()
-            return HttpResponse('noted/list.html', pk=post.pk)
+            return HttpResponseRedirect('/noted/'+str(post.id)+'/')
+        else:
+            print form.errors
     else:
-        form = ModelForm()
+        form = UploadFileForm()
     return render(request, 'noted/upload.html',{ 'form': form })
-    
+
 
