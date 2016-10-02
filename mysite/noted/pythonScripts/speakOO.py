@@ -13,11 +13,12 @@ text_to_speech = TextToSpeechV1(
 
 
 
-class tigers():
-    def __init__(self):
-	hello2 = ""
-	with open(join(dirname(__file__), './consolidate.txt'), 'r') as document:
-	    for line in document:
-	        hello2+=line
-	    with open(join(dirname(__file__), './consol.wav'), 'wb') as audio_file:
-	        audio_file.write(text_to_speech.synthesize(text=hello2, accept='audio/wav', voice="en-US_AllisonVoice"))
+class speak():
+    def __init__(self,filename):
+        tmp = ""
+        print '../media/'+filename
+        with open(join(dirname(__file__), 'consolidate.txt'), 'r') as document:
+            for line in document:
+                tmp+=line
+            with open('noted/media/'+filename, 'wb') as audio_file:
+                audio_file.write(text_to_speech.synthesize(text=tmp, accept='audio/wav', voice="en-US_AllisonVoice"))

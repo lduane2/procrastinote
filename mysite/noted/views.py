@@ -18,6 +18,7 @@ from .models import UploadedFile
 from .pythonScripts.tigersOO import tigers
 from .pythonScripts.consolidateOO import consolidate
 from .pythonScripts.keyconceptsOO import keyconcepts
+from .pythonScripts.speakOO import speak
 
 from django.utils import timezone
 
@@ -64,6 +65,7 @@ def detail(request,upload_id):
     f1 = open('noted/pythonScripts/concepts.txt', 'r')
     for line in f1:
         filetext.append(line[:-1])
+
     wavstr = uf[0].folder
     wavstr = wavstr.split('/')[-2] + '.wav'
     consolidate()
@@ -84,5 +86,3 @@ def upload_file(request):
     else:
         form = UploadFileForm()
     return render(request, 'noted/upload.html',{ 'form': form })
-
-

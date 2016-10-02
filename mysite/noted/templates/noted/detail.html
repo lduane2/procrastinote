@@ -15,10 +15,12 @@ a { cursor: pointer; }
 
 {{ found|safe }}
 
+<p> {{ fileText }} </p>
+
 <br>
 <div class="container center">
-    <audio controls>
-      <source src="../../pythonScripts/consol.wav" type="audio/wav">
+    <audio controls="Audio">
+        <source src={{ wavFile }} type="audio/wav">
     </audio>
 </div>
 
