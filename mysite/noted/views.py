@@ -56,11 +56,10 @@ def detail(request,upload_id):
                 found = response
         tigers(filename=uf[0].file_path)
         keyconcepts()
-        #os.system("keyconcepts.py")
-        fileText = 'something'
-        '''f1 = open('./concepts', 'r')
+        f1 = open('noted/pythonScripts/concepts.txt', 'r')
+        fileText=[]
         for line in f1:
-            fileText += line'''
+            fileText.append(line[:-1])
 
     return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
 
