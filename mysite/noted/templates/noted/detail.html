@@ -61,7 +61,7 @@
         <label for="id_keyword" class="col-sm-2 col-form-label"></label>
         <div class="col-sm-10">
             <div class="input-group">
-                <input id="keyword-id" name="keyword" type="text" class="form-control" placeholder="Enter any word">
+                <input id="keyword-id" name="keyword" type="text" class="form-control" value="" placeholder="Enter any word">
             </div>
         </div>
     </div>
@@ -94,13 +94,4 @@
     </div>
 </form>
 </div>
-{% endblock %}
-
-{% block js %}
-<script>
-    function changeValue() {
-        document.forms['detail-form'].getElementById("keyword-id").value = "My value";
-    }
-});
-</script>
 {% endblock %}

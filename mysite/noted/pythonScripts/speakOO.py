@@ -13,4 +13,7 @@ class speak():
             for line in document:
                 tmp+=line
             with open('noted/static/audio/'+filename, 'wb') as audio_file:
-                audio_file.write(text_to_speech.synthesize(text=tmp, accept='audio/wav', voice="en-US_AllisonVoice"))
+                try:
+                    audio_file.write(text_to_speech.synthesize(text=tmp, accept='audio/wav', voice="en-US_AllisonVoice"))
+                except:
+                    return
