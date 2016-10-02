@@ -14,13 +14,11 @@ tr { cursor: pointer; }
 
 {% block content %}
     <div class="list-group">
-        {% if uploads_list %}
         {% for upload in uploads_list %}
             <a class="list-group-item" href="{% url 'noted:detail' upload.id %}">
                 {{ upload.file_name }}
             </a>
         {% endfor %}
-        {% endif %}
     </div>
 {% endblock %}
 

@@ -13,14 +13,14 @@ a { cursor: pointer; }
 
 {% block content %}
 
-{{ found|safe }}
+{{ contents|safe }}
 
 <p> {{ fileText }} </p>
 
 <br>
 <div class="container center">
     <audio controls="Audio">
-        <source src={{wavFile}} type="audio/wav">
+        <source src={{ wavFile }} type="audio/wav">
     </audio>
 </div>
 
@@ -97,7 +97,6 @@ a { cursor: pointer; }
 {% endblock %}
 
 {% block js %}
-
 <script>
     function changeValue(o){
         document.getElementById('keyword-id').value=o.innerHTML;

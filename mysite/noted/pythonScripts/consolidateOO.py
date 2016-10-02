@@ -3,8 +3,8 @@ from os.path import join, dirname
 import string
 import sys
 class consolidate():
-	def __init__(self, autosum=0, pmode=0, smart=0, none=1, keyWord=""):
-		#keyWord = "view"
+	def __init__(self, autosum=0, pmode=0, ssmart=0, s=0, keyword=""):
+		#keyword = "view"
 		#autosum = 1
 		#pmode = 0
 		#smart = 1
@@ -39,8 +39,8 @@ class consolidate():
 				for lines in document:
 					if(len(lines) == 1):
 						#print currentp
-						if(currentp.find(keyWord) != -1):
-							#print keyWord
+						if(currentp.find(keyword) != -1):
+							#print keyword
 							f1.write(currentp)
 						currentp = ""
 						
@@ -57,18 +57,17 @@ class consolidate():
 							else:
 								f1.write(lines)
 						if(topp == 1):
-							if(lines.find(keyWord) != -1):
+							if(lines.find(keyword) != -1):
 								topp = 3
 							else:
-								
 								topp = 0
-						if(len(lines) == 1):
+						if(len(lines) == 2):
 							topp = 1
-						if (lines.find(keyWord) != -1):
+						if (lines.find(keyword) != -1):
 							f1.write(lines)
 				else:
 					for lines in document:
-						if (lines.find(keyWord) != -1):
+						if (lines.find(keyword) != -1):
 							f1.write(lines)
 
 

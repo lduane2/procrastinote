@@ -43,51 +43,51 @@ def list(request):
 
 def detail(request,upload_id):
     filetext=[]
+    contents=""
+    wavstr=""
     upload = get_object_or_404(UploadedFile, pk=upload_id)
-
+    uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
     if request.method == 'POST':
-        autosum = 0
-        pmode = 0
-        smart = 0
-        none = 0
+        mode = -1
 
         if request.POST.get("keyword",""):
             keyword = request.POST.get("keyword","")
-            if request.POST.get("paragraph", ""):
-                pmode = 1
-            if request.POST.get("smart-paragraph", ""):
-                smart = 1
+            if request.POST.get("sentence",""):
+                mode = 0
+            elif request.POST.get("paragraph",""):
+                mode = 2
+            elif request.POST.get("smart-paragraph",""):
+                mode = 3
         elif request.POST.get("auto", ""):
             autosum = 1
-        else:
-            none = 1
 
-        if request.POST.get("reset", "") == "on":
-            uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
+        consolidate(mode=mode,keyword=keyword)
+        f = open('noted/pythonScripts/consolidate.txt','r')
+        for line in f:
+            contents.append(line[:-1])
+        
+        wavstr = uf[0].folder
+        wavstr = wavstr.split('/')[-2] + '.wav'
+        speak(filename=wavstr)
+
     else:
-        UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
-    
-    with open(uf[0].file_path, 'r') as document:
-        config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
-        response = document_conversion.convert_document(document=document, config=config).content
-        try:
-            m = re.search('<body>(.*)</body>', response)
-            found = m.group(1)
-        except:
-            found = response
-    tigers(filename=uf[0].file_path)
+        with open(uf[0].file_path, 'r') as document:
+            config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
+            response = document_conversion.convert_document(document=document, config=config).content
+            try:
+                m = re.search('<body>(.*)</body>', response)
+                contents = m.group(1)
+            except:
+                contents = response
+
+        tigers(filename=uf[0].file_path)
+
     keyconcepts()
     f1 = open('noted/pythonScripts/concepts.txt', 'r')
     for line in f1:
         filetext.append(line[:-1])
 
-    #wavstr = uf[0].folder
-    #wavstr = wavstr.split('/')[-2] + '.wav'
-
-    #consolidate()
-    #speak(filename=wavstr)
-
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext } )
+    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': '../media/'+wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
