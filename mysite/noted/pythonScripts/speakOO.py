@@ -5,10 +5,10 @@ from watson_developer_cloud import TextToSpeechV1
 
 
 text_to_speech = TextToSpeechV1(
-                                username='5cf233f6-1bd1-4dd9-959e-7cbf72bd8d29',
-                                password='vLhtWWtffVLB'
-                                #x_watson_learning_opt_out=True
-                                )  # Optional flag
+        username='5cf233f6-1bd1-4dd9-959e-7cbf72bd8d29',
+        password='vLhtWWtffVLB'
+        #x_watson_learning_opt_out=True
+        )  # Optional flag
 
 
 

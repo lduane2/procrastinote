@@ -5,7 +5,7 @@
 
 {% block css %}
 <style>
-tr { cursor: pointer; }
+    tr { cursor: pointer; }
 </style>
 {% endblock %}
 
@@ -13,21 +13,21 @@ tr { cursor: pointer; }
 {% block jumbotron_description %}All the currently uploaded files.{% endblock %}
 
 {% block content %}
-    <div class="list-group">
-        {% for upload in uploads_list %}
-            <a class="list-group-item" href="{% url 'noted:detail' upload.id %}">
-                {{ upload.file_name }}
-            </a>
-        {% endfor %}
-    </div>
+<div class="list-group">
+    {% for upload in uploads_list %}
+    <a class="list-group-item" href="{% url 'noted:detail' upload.id %}">
+        {{ upload.file_name }}
+    </a>
+    {% endfor %}
+</div>
 {% endblock %}
 
 {% block js %}
 <script>
-jQuery(document).ready(function($) {
-    $(".clickable-row").click(function() {
-        window.document.location = $(this).data("href");
+    jQuery(document).ready(function($) {
+        $(".clickable-row").click(function() {
+            window.document.location = $(this).data("href");
+        });
     });
-});
 </script>
 {% endblock js %}
