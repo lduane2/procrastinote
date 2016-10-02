@@ -18,6 +18,7 @@ from .models import UploadedFile
 from .pythonScripts.tigersOO import tigers
 from .pythonScripts.consolidateOO import consolidate
 from .pythonScripts.keyconceptsOO import keyconcepts
+from .pythonScripts.speakOO import speak
 
 from django.utils import timezone
 
@@ -60,8 +61,11 @@ def detail(request,upload_id):
         fileText=[]
         for line in f1:
             fileText.append(line[:-1])
-
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
+    wavstr = uf[0].folder
+    wavstr = wavstr.split('/')[-2] + '.wav'
+    consolidate()
+    speak(filename=wavstr)
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText, 'wavFile': '../media/'+wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':

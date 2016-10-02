@@ -1,5 +1,5 @@
-Gender
-Feminism
-Judith Butler
-Simone de Beauvoir
-Gender role
+Shortest path problem
+Computer
+2016
+2015
+Dijkstra's algorithm

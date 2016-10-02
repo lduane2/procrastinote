@@ -3,18 +3,24 @@ from os.path import join, dirname
 import string
 import sys
 class consolidate():
-	def __init__(self, autosum, pmode, smart):
+	def __init__(self, autosum=0, pmode=0, smart=0, none=1):
 		keyWord = "view"
-		autosum = 1
-		pmode = 0
-		smart = 1
+		#autosum = 1
+		#pmode = 0
+		#smart = 1
 		topp = 0
 		currentp = ""
 		currline = 2
 		line2 = ""
 		count = 0
+
 		f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
 		with open(join(dirname(__file__), './rawText.txt'), 'r') as document:
+			if (none):
+				for lines in document:
+					f1.write(lines)
+				f1.close()
+				return
 			if(autosum):
 				for lines in document:
 					if(count != 0):
