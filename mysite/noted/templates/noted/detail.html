@@ -18,7 +18,7 @@
 <br>
 <div class="container center">
     <audio controls>
-        <source src="/static/{{wavFile}}" type="audio/wav">
+        <source src="/static/audio/{{wavfile}}" type="audio/wav">
     </audio>
 </div>
 
@@ -26,7 +26,7 @@
 <div class="container">
     <form method="post" enctype="multipart/form-data" id="detail-form">{% csrf_token %}
         <div class="form-group row">
-            <div class="col-sm-offset-2 col-sm-8">
+            <div class="col-sm-10">
                 <div class="panel panel-default">
                     <div class="panel-heading">Options (select one)</div>
                     <div class="panel-body">
@@ -38,6 +38,7 @@
                         </div>
                         <h5>Other Options</h5>
                         <div class="well well-sm">
+                            <p><b>Load Audio</b><br>Load an audio file of the shortened file. Must be selected with another option other than reset.</p>
                             <p><b>Auto-Summary</b><br>Prints out the first and last sentence of every paragraph.</p>
                             <p><b>Reset</b><br>Revert back to the original text.</p>
                         </div>

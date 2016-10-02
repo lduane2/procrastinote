@@ -15,8 +15,6 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__) + "../")
-
 # Defines the views served for root URLs
 ROOT_URLCONF = '{{ project_name }}.urls'
 
@@ -29,7 +27,7 @@ SECRET_KEY = 'z)lsh1p6bdjr2maep)irxe+ge6vjpp6bi4qvb*^to8b0@%y^2&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.ann.esc.nd.edu/']
 
 
 # Application definition

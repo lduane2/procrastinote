@@ -10,6 +10,11 @@
         margin-left: 50px;
     }
 }
+@media(max-width:625px) {
+    .left-margin {
+        margin-left: 25px;
+    }
+}
 
 header {
     background-color: #eee;
@@ -27,4 +32,17 @@ header {
 .center {
     margin: 10px auto;
     width: 320px;}
+}
+
+.center-text {
+    margin: auto;
+    width: 80%;
+    padding: 10px;
+}
+@media(min-width:768px) {
+    .center-text {
+        margin: auto;
+        width: 75%;
+        padding: 10px;
+    }
 }

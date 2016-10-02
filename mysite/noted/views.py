@@ -61,7 +61,7 @@ def detail(request,upload_id):
         elif request.POST.get("auto", ""):
             mode = 1
 
-        if request.POST.get("reset",""):
+        if request.POST.get("reset","") or mode == -1:
             with open(uf[0].file_path, 'r') as document:
                 config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
                 response = document_conversion.convert_document(document=document, config=config).content
@@ -75,10 +75,10 @@ def detail(request,upload_id):
             with open('noted/pythonScripts/consolidate.txt', 'r') as document:
                 contents=document.read().replace('\n', '')
 
-        if request.POST.get("audio",""):
-            wavstr = uf[0].folder
-            wavstr = wavstr.split('/')[-2] + '.wav'
-            speak(filename=wavstr)
+            if request.POST.get("audio",""):
+                wavstr = uf[0].folder
+                wavstr = wavstr.split('/')[-2] + '.wav'
+                speak(filename=wavstr)
 
     else:
         with open(uf[0].file_path, 'r') as document:
@@ -97,7 +97,11 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
+<<<<<<< HEAD
     return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
+=======
+    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavfile': wavstr} )
+>>>>>>> 22c10242cc063bf0dd13603384e926a73690e40e
 
 def upload_file(request):
     if request.method == 'POST':
