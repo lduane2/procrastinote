@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, HttpResponseRedirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.utils import timezone
@@ -12,7 +12,7 @@ import os
 from os.path import join, dirname
 from watson_developer_cloud import DocumentConversionV1
 
-from .forms import ModelForm
+from .forms import UploadFileForm
 from .models import UploadedFile
 
 from django.utils import timezone
@@ -50,17 +50,19 @@ def detail(request,upload_id):
                 found = m.group(1)
             except:
                 found = response
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload } )
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload })
 
 def upload_file(request):
     if request.method == 'POST':
-        form = ModelForm(request.POST)
+        form = UploadFileForm(request.POST,request.FILES)
         if form.is_valid():
-            print form
+            print "Valid form :)"
             post = form.save(commit=False)
             post.upload_date = timezone.now()
             post.save()
-            return HttpResponse('noted/list.html', pk=post.pk)
+            return HttpResponseRedirect('/noted/'+str(post.id)+'/')
+        else:
+            print form.errors
     else:
-        form = ModelForm()
+        form = UploadFileForm()
     return render(request, 'noted/upload.html',{ 'form': form })
