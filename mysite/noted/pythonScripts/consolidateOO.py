@@ -66,8 +66,6 @@ class consolidate():
 							topp = 1
 						if (lines.find(keyWord) != -1):
 							f1.write(lines)
-						
-						
 				else:
 					for lines in document:
 						if (lines.find(keyWord) != -1):

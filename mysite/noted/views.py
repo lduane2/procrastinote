@@ -43,15 +43,30 @@ def list(request):
 
 def detail(request,upload_id):
     filetext=[]
-    radio = ""
     upload = get_object_or_404(UploadedFile, pk=upload_id)
 
     if request.method == 'POST':
-        print request.POST.get("optradio", "")
-        print request.POST.get("keyword", "")        
+        autosum = 0
+        pmode = 0
+        smart = 0
+        none = 0
 
-    uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
-    upload = get_object_or_404(UploadedFile, pk=upload_id)
+        if request.POST.get("keyword",""):
+            keyword = request.POST.get("keyword","")
+            if request.POST.get("paragraph", ""):
+                pmode = 1
+            if request.POST.get("smart-paragraph", ""):
+                smart = 1
+        elif request.POST.get("auto", ""):
+            autosum = 1
+        else:
+            none = 1
+
+        if request.POST.get("reset", "") == "on":
+            uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
+    else:
+        UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
+    
     with open(uf[0].file_path, 'r') as document:
         config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
         response = document_conversion.convert_document(document=document, config=config).content
@@ -66,12 +81,13 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
-    wavstr = uf[0].folder
-    wavstr = wavstr.split('/')[-2] + '.wav'
-    consolidate()
-    speak(filename=wavstr)
+    #wavstr = uf[0].folder
+    #wavstr = wavstr.split('/')[-2] + '.wav'
 
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': '../media/'+wavstr} )
+    #consolidate()
+    #speak(filename=wavstr)
+
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext } )
 
 def upload_file(request):
     if request.method == 'POST':
