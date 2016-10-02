@@ -1,51 +1,9 @@
- 
-The University of Notre Dame du Lac (or simply Notre Dame /notrdem/ NOH-tr-DAYM NOH-tr-DAYM NOH-tr-DAYM ) is a Catholic research universityl ocated adjacent to South Bend, Indiana South Bend, Indiana , in the United States
- In French, Notre Dame du Lac means "Our Lady of the Lake" and refers to the university's patron saint patron saint , the Virgin Mary 
- The main campus covers 1,250 acres (5,100,000 m2) in a suburban setting and it contains a number of recognizable landmarks, such as the Golden Dome Golden Dome , the "Word of Life" mural (commonly known as Touchdown Jesus ), and the Basilica Basilica 
- The school was founded on November 26, 1842 by Father Edward Sorin , CSC CSC , who was also its first president, as an all-male institution on for the university, including the president of the university
- 
-Notre Dame is a large, four-year, highly residential research university
- It is consistently ranked among the top twenty universities in the United States and as a major global university [7][ ][8] and is highly regarded for its undergraduate education 
-[9] Notre Dame is also ranked as one of the top research universities [10] and it has one of the largest endowments in the nation with over $10 billion
- teaching New Classical Architecture and for awarding the globally renowned annual Driehaus Driehaus Architecture Prize 
- The university offers over 50 foreign study abroad yearlong programs and over 15 summer programs
- Notre Dame's graduate program has more than 50 master, doctoral and professional degree programs offered by the five schools, with the addition of the Notre Dame Law Notre Dame Law Library and the Snite Museum of Art Snite Museum of Art 
- The university boasts one of the largest Navy ROTC programs in the nation
- Over 80% of the university's 8,000 undergraduates live on campus in one of 29 single- 29 single- sex residence halls , each with its own traditions, legacies, events, and intramural sports intramural sports teams
- The university counts approximately 120,000 alumni, considered among the strongest alumni networks among U
-S
- colleges
- especially under the guidance of the legendary coach Knute Rockne Knute Rockne 
- The university's athletic teams team, an Independent , has accumulated eleven consensus national championships, seven Heisman Heisman Trophy winners, 62 members in the College Football Hall of Fame , 13 members in the Pro Football Pro Football Hall of Fame , and is considered one of the most famed and successful college football teams in recognizable collegiate fight song
- 
-Started as a small all-male institution in 1842 and charter in 1844, Notre Dame reached international fame at the beginning of the 20th century
- Major improvements to the university occurred during the administration of the Rev
- Theodore Hesburgh Theodore Hesburgh between 1952 and 1987 as Hesburgh's administration greatly increased the university's resources, academic programs, and reputation and first enrolled women undergraduates in 1972
- Ever since, the University has seen steady growth, and under the leadership of the next two presidents, Rev
- Malloy and Rev
- Jenkins, many infrastructure and research expansions have been completed
- Father Edward Sorin of the Congregation of Holy Cross , on the condition that he build a college in two years
- [15] Fr
- Sorin arrived on the site with eight Holy Cross brothers from France and Ireland on land donated by the Bishop of Vincennes (Indiana)
- Today, many Holy Cross priests continue to work Undergraduate students are organized into four colleges ( Arts and Letters , Science , Engineering , Business ), and the Architecture School 
- The latter is known for School and a MD-PhD program offered in combination with IU medical School 
- [11][ ][12] It maintains a system of libraries, cultural venues, artistic and scientific museums, including the Hesburgh 
-Notre Dame rose to national prominence in the early 1900s for its Fighting Irish football team , are members of the NCAA Division I and are known collectively as the Fighting Irish 
- The football history
- Other ND teams, chiefly in the Atlantic Coast Conference , have accumulated 16 national championships
- The Notre Dame Victory March is often regarded as the most famous and 
-In 1842, the Bishop of Vincennes, Clestine Guynemer de la Hailandire , offered land to November 26, 1842, and began the school using Father Stephen Badin' s old log chapel log chapel 
- He soon erected additional buildings, including the Old College Old College , the first church, and the first main building
- They immediately acquired two students and set about building additions to the campus
- 
-Notre Dame began as a primary and secondary school, but soon received its official college charter from the Indiana General Assembly Indiana General Assembly on January 15, 1844 
-[17] Under the charter the school is officially named the University of Notre Dame du Lac (University of Our Lady of the Lake) 
-[18] Because the university was originally only for male students, the female-only Saint Mary's College Saint Mary's College was founded by the Sisters of the Holy Cross near Notre Dame in 1844
- 
-The first degrees from the college were awarded in 1849 
-[21] The university was expanded with new buildings to accommodate more students and faculty
- [17] With each new president, new academic programs were offered and new buildings built to accommodate them 
-[22] The original Main Building built by Fr
- Sorin just after he arrived was replaced by a larger "Main Building" in 1865, which housed the university's administration, classrooms, and dormitories
- Beginning in 1873, a library collection was started by Father Lemonnier, housed in the Main Building, and by 1879 it had grown to ten thousand volumes
- 
+ School Address: 338 McGlinn Hall  Notre Dame, IN 46556  (713) 874-4641  akeenan2@nd
+edu Permanent Address: 7018 Adobe Trails Ct
+  Sugar Land, TX 77479 EDUCATION University of Notre Dame Notre Dame, IN Bachelor of Science, Major: Computer Science Jan 2018 Dean's List: Fall 2015, Spring 2016 GPA: 3
+676/4
+0 University of Notre Dame Global Gateway Program Rome, Italy Study Abroad, College of Engineering Summer 2015 RELATED EXPERIENCE Engineering and Science Computing Notre Dame, IN Computer Consultant Sept 2015 - Present  Imaged computers for departmental use  Wrote scripts to facilitate data transfer between local systems and remote servers  Refactored the code for the website API to unify the layout and provide easier access to information Department of Psychology , Dr
+ Zhiyong Zhang Notre Dame, IN Undergraduate Research Assistant Sept 2016 - Present  Developed an interactive website for an online textbook  Utilized PHP to communicate with the database and designed the front end layout with HTML and Javascript Mobile Computing Lab , Dr
+ Christian Poellabauer Notre Dame, IN Undergraduate Research Assistant Fall 2015  Created a mobile application to detect autism in infants through the analysis of speech recordings  Implemented a Java REST service and worked with javamail API functions for secure user email verification PROJECTS Theseus , Hesburgh Library Hackathon, 1st Place Spring 2016 Web Designer  Designed a website showcasing an updated mapping utility by implementing a shortest path algorithm  Integrated Bootstrap base code with custom CSS and JS code in order to create a visually appealing webpage with intuitive user interactions  Wrote multiple python and shell scripts to facilitate data flow from a database of books Breaking Blue , CSE 20212 Fundamentals of Computing II Spring 2016 Head Programmer  Produced a visual effects game in C++ with the SDL libraries for a two-dimensional visual experience  Optimized with OOP by applying polymorphism through inheritance hierarchies  Created an AI to engage the user in an interactive fight sequence WORK EXPERIENCE Einstein Noah Restaurant Group, Inc
+ Notre Dame, IN Cashier Jan 2015 - May 2016  Managed and maintained the organization of merchandise while cataloguing inventory stocks  Conducted store to customer transactions and deliveries for 10 - 12 hours a week, three days a week ACTIVITIES Appalachia: Science in the Public Interest (ASPI), Volunteer Society of Women Engineers (SWE), Member St
+ Adalbert School, Volunteer SKILLS Computer: C, C++, Python, HTML, CSS, PHP, SQL, Unix, Java, MATLAB Language: Bilingual in English and Mandarin Chinese; conversational Spanish 

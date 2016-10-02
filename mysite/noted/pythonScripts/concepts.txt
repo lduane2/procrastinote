@@ -1,5 +1,5 @@
-University of Notre Dame
-Congregation of Holy Cross
-Edward Sorin
-Knute Rockne
-College
+Shortest path problem
+Computer
+2016
+2015
+Dijkstra's algorithm
