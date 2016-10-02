@@ -27,7 +27,7 @@ SECRET_KEY = 'z)lsh1p6bdjr2maep)irxe+ge6vjpp6bi4qvb*^to8b0@%y^2&'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.ann.esc.nd.edu/']
 
 
 # Application definition
