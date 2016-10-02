@@ -15,6 +15,10 @@ from watson_developer_cloud import DocumentConversionV1
 from .forms import ModelForm
 from .models import UploadedFile
 
+from ./noted/pythonScripts/tigersOO import tigers
+from ./noted/pythonScripts/consolidateOO import consolidate
+from ./noted/pythonScripts/keyconceptsOO import keyconcepts
+
 from django.utils import timezone
 
 document_conversion = DocumentConversionV1(
@@ -50,7 +54,15 @@ def detail(request,upload_id):
                 found = m.group(1)
             except:
                 found = response
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload } )
+        tigers(uf[0].file_path)
+        keyconcepts()
+        #os.system("keyconcepts.py")
+        fileText = 'something'
+        f1 = open('./concepts', 'r')
+        for line in f1:
+        	fileText += line
+        
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
 
 def upload_file(request):
     if request.method == 'POST':
@@ -64,3 +76,5 @@ def upload_file(request):
     else:
         form = ModelForm()
     return render(request, 'noted/upload.html',{ 'form': form })
+    
+
