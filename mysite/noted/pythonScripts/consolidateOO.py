@@ -3,8 +3,8 @@ from os.path import join, dirname
 import string
 import sys
 class consolidate():
-	def __init__(self, autosum=0, pmode=0, smart=0, none=1):
-		keyWord = "view"
+	def __init__(self, autosum=0, pmode=0, smart=0, none=1, keyWord=""):
+		#keyWord = "view"
 		#autosum = 1
 		#pmode = 0
 		#smart = 1
@@ -40,7 +40,7 @@ class consolidate():
 					if(len(lines) == 1):
 						#print currentp
 						if(currentp.find(keyWord) != -1):
-							print keyWord
+							#print keyWord
 							f1.write(currentp)
 						currentp = ""
 						
