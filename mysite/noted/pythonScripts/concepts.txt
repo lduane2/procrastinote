@@ -1,5 +1,0 @@
-Shortest path problem
-Computer
-2016
-2015
-Dijkstra's algorithm
