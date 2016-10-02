@@ -50,7 +50,7 @@ def detail(request,upload_id):
                 found = m.group(1)
             except:
                 found = response
-    return render(request, 'noted/detail.html', {'found': found, 'upload': upload} )
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload } )
 
 def upload_file(request):
     if request.method == 'POST':

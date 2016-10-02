@@ -14,7 +14,7 @@ def file_path(instance,filename):
     date = date.strftime('%Y-%m-%dT%H%M%S')
     store_name = instance.file_name.replace(" ","_")+'_'+date
     instance.folder = 'noted/uploads/'+store_name+'/'
-    instance.file_path = instance.folder+store_name
+    instance.file_path = instance.folder+store_name+'.pdf'
     return instance.file_path
 
 class UploadedFile(models.Model):
