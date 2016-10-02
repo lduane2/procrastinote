@@ -16,9 +16,8 @@ text_to_speech = TextToSpeechV1(
 class speak():
     def __init__(self,filename):
         tmp = ""
-        print '../media/'+filename
         with open(join(dirname(__file__), 'consolidate.txt'), 'r') as document:
             for line in document:
                 tmp+=line
-            with open('noted/media/'+filename, 'wb') as audio_file:
+            with open('noted/static/'+filename, 'wb') as audio_file:
                 audio_file.write(text_to_speech.synthesize(text=tmp, accept='audio/wav', voice="en-US_AllisonVoice"))

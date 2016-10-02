@@ -68,10 +68,12 @@ def detail(request,upload_id):
 
     wavstr = uf[0].folder
     wavstr = wavstr.split('/')[-2] + '.wav'
-    consolidate()
+    print "WAVSTR"
+    print wavstr
+    consolidate(mode=0)
     speak(filename=wavstr)
 
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': '../media/'+wavstr} )
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
