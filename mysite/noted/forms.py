@@ -10,5 +10,8 @@ class UploadFileForm(forms.ModelForm):
     file_name = forms.CharField(max_length=200)
     file_contents = forms.FileField()
 
+<<<<<<< HEAD
 #class Form(forms.Form):
    # haha = 'lol'
+=======
+>>>>>>> cd24d4dad7c9b824ec5114c122b23516598a7713
