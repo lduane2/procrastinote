@@ -3,7 +3,7 @@ from os.path import join, dirname
 import string
 import sys
 class consolidate():
-	def __init__(self, autosum=0, pmode=0, smart=0, none=1, keyWord=""):
+	def __init__(self, mode, keyWord=""):
 		#keyWord = "view"
 		#autosum = 1
 		#pmode = 0
@@ -14,8 +14,69 @@ class consolidate():
 		line2 = ""
 		count = 0
 
+
+
 		f1 = open(join(dirname(__file__), './consolidate.txt'), 'w+')
 		with open(join(dirname(__file__), './rawText.txt'), 'r') as document:
+			if mode==0: # sentense
+				for lines in document:
+						if (lines.find(keyWord) != -1):
+							f1.write(lines)
+			elif mode==1: #autosum
+				for lines in document:
+					if(count != 0):
+						if(currline == 2):
+							f1.write(lines)
+							currline = 0
+						if(len(lines) == 2):
+							f1.write(line2)
+							f1.write('\n')
+							currline = 2
+						line2 = lines
+					else:
+						count = 1
+			elif mode==2: #paragraph mode
+				for lines in document:
+					if(len(lines) == 2):
+						#print currentp
+						if(currentp.find(keyWord) != -1):
+							#print keyWord
+							f1.write(currentp)
+						currentp = ""
+						
+					else:
+						currentp += lines
+			elif mode==3: #smart mode
+				for lines in document:
+						if(topp == 3):
+							if(len(lines) == 2):
+								topp = 0
+							else:
+								f1.write(lines)
+						if(topp == 1):
+							if(lines.find(keyWord) != -1):
+								topp = 3
+							else:
+								topp = 0
+						if(len(lines) == 2):
+							topp = 1
+						if (lines.find(keyWord) != -1):
+							f1.write(lines)
+			else: #none
+				for lines in document:
+						f1.write(lines)
+		
+			f1.close()
+					
+'''
+			switch (mode) {
+
+				case 0: # none 
+					for lines in document:
+						f1.write(lines)
+					f1.close()
+					break:
+			}
 			if (none):
 				for lines in document:
 					f1.write(lines)
@@ -75,3 +136,4 @@ class consolidate():
 
 
 		f1.close()
+'''
