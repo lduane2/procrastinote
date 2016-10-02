@@ -3,12 +3,60 @@
 {% block page_title %}Noted - Home{% endblock %}
 {% block page_class %}home-page{% endblock %}
 
+{% block css %}
+<style>
+a { cursor: pointer; }
+</style>
+{% endblock %}
+
 {% block jumbotron_name %}{{ upload.file_name }}{% endblock %}
-{% block jumbotron_description %}Contents of a file.{% endblock %}
 
 {% block content %}
 
 {{ found|safe }}
 
+<hr>
+<h4>Options</h4>
+
+<div class="container">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="form-group row">
+            <label for="id_file_name" class="col-sm-2 col-form-label">Keyword:</label>
+            <div class="col-sm-10">
+                <div class="input-group">
+                    <input type="text" class="form-control" aria-label="...">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example <span class="caret"></span></button>
+                        <ul class="dropdown-menu">
+                            <li><a>HTML</a></li>
+                            <li><a>CSS</a></li>
+                            <li><a>JavaScript</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+autosum - first and last line of every P (button)
+keyword options:
+paragraph, sentence, smart sentence
+
+revert button
+
+readtext
 {% endblock %}
 
+{% block js %}
+<script>
+    $(".dropdown-menu").on('click', 'li a', function(){
+        $(".btn:first-child").text($(this).text());
+        $(".btn:first-child").val($(this).text());
+    });
+</script>
+
+{% endblock %}

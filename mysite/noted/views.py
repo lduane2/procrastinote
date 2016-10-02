@@ -42,7 +42,8 @@ def detail(request,upload_id):
     else:
         uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
         upload = get_object_or_404(UploadedFile, pk=upload_id)
-        with open(uf[0].file_path, 'r+') as document:
+        path = uf[0].file_path+uf[0].stored_name;
+        with open(path, 'r') as document:
             config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
             response = document_conversion.convert_document(document=document, config=config).content
             try:
