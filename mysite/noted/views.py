@@ -75,9 +75,10 @@ def detail(request,upload_id):
             with open('noted/pythonScripts/consolidate.txt', 'r') as document:
                 contents=document.read().replace('\n', '')
 
-        wavstr = uf[0].folder
-        wavstr = wavstr.split('/')[-2] + '.wav'
-        speak(filename=wavstr)
+        if request.POST.get("audio",""):
+            wavstr = uf[0].folder
+            wavstr = wavstr.split('/')[-2] + '.wav'
+            speak(filename=wavstr)
 
     else:
         with open(uf[0].file_path, 'r') as document:
@@ -96,7 +97,7 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
-    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': '../media/'+wavstr} )
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
