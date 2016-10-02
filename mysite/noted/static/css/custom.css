@@ -5,6 +5,12 @@
     display: block;
 }
 
+@media(max-width:768px) {
+    .left-margin {
+        margin-left: 50px;
+    }
+}
+
 header {
     background-color: #eee;
 }

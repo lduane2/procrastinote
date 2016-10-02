@@ -41,33 +41,40 @@ def list(request):
     return render(request, 'noted/list.html', context)
 
 def detail(request,upload_id):
-    if request.method == 'POST':
-        print "posted"
-    else:
-        uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
-        upload = get_object_or_404(UploadedFile, pk=upload_id)
-        with open(uf[0].file_path, 'r') as document:
-            config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
-            response = document_conversion.convert_document(document=document, config=config).content
-            try:
-                m = re.search('<body>(.*)</body>', response)
-                found = m.group(1)
-            except:
-                found = response
-        tigers(filename=uf[0].file_path)
-        keyconcepts()
-        f1 = open('noted/pythonScripts/concepts.txt', 'r')
-        fileText=[]
-        for line in f1:
-            fileText.append(line[:-1])
+    filetext=[]
+    radio = ""
+    upload = get_object_or_404(UploadedFile, pk=upload_id)
 
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'fileText': fileText} )
+    if request.method == 'POST':
+        print request.POST.get("optradio", "")
+        print request.POST.get("keyword", "")        
+
+    uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
+    upload = get_object_or_404(UploadedFile, pk=upload_id)
+    with open(uf[0].file_path, 'r') as document:
+        config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
+        response = document_conversion.convert_document(document=document, config=config).content
+        try:
+            m = re.search('<body>(.*)</body>', response)
+            found = m.group(1)
+        except:
+            found = response
+    tigers(filename=uf[0].file_path)
+    keyconcepts()
+    f1 = open('noted/pythonScripts/concepts.txt', 'r')
+    for line in f1:
+        filetext.append(line[:-1])
+    wavstr = uf[0].folder
+    wavstr = wavstr.split('/')[-2] + '.wav'
+    consolidate()
+    speak(filename=wavstr)
+
+    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': '../media/'+wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST,request.FILES)
         if form.is_valid():
-            print "Valid form :)"
             post = form.save(commit=False)
             post.upload_date = timezone.now()
             post.save()
