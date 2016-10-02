@@ -59,7 +59,7 @@ def detail(request,upload_id):
             elif request.POST.get("smart-paragraph",""):
                 mode = 3
         elif request.POST.get("auto", ""):
-            autosum = 1
+            mode = 1
 
         if request.POST.get("reset",""):
             with open(uf[0].file_path, 'r') as document:
@@ -97,7 +97,7 @@ def detail(request,upload_id):
     for line in f1:
         filetext.append(line[:-1])
 
-    return render(request, 'noted/detail.html', { 'found': found, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
+    return render(request, 'noted/detail.html', { 'contents': contents, 'upload': upload, 'filetext': filetext, 'wavFile': wavstr} )
 
 def upload_file(request):
     if request.method == 'POST':
