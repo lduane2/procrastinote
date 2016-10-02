@@ -10,5 +10,3 @@ class UploadFileForm(forms.ModelForm):
     file_name = forms.CharField(max_length=200)
     file_contents = forms.FileField()
 
-class Form(forms.Form):
-    

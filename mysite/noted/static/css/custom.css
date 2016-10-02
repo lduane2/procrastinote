@@ -12,3 +12,13 @@ header {
 .jumbotron {
     max-height: 200px;
 }
+@media(min-width:768px) {
+    .jumbotron {
+        margin-left: 50px;
+    }
+}
+
+.center {
+    margin: 10px auto;
+    width: 320px;}
+}
