@@ -15,9 +15,9 @@ from watson_developer_cloud import DocumentConversionV1
 from .forms import ModelForm
 from .models import UploadedFile
 
-from ./noted/pythonScripts/tigersOO import tigers
-from ./noted/pythonScripts/consolidateOO import consolidate
-from ./noted/pythonScripts/keyconceptsOO import keyconcepts
+from .pythonScripts.tigersOO import tigers
+from .pythonScripts.consolidateOO import consolidate
+from .pythonScripts.keyconceptsOO import keyconcepts
 
 from django.utils import timezone
 
@@ -54,7 +54,10 @@ def detail(request,upload_id):
                 found = m.group(1)
             except:
                 found = response
-        tigers(uf[0].file_path)
+        print ('SHIT')
+        print uf[0].file_path  
+
+        tigers(filename=uf[0].file_path)
         keyconcepts()
         #os.system("keyconcepts.py")
         fileText = 'something'

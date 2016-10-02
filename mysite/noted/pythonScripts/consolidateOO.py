@@ -2,8 +2,8 @@
 from os.path import join, dirname
 import string
 import sys
-class consolidate(autosum, pmode, smart):
-	def __init__(self):
+class consolidate():
+	def __init__(self, autosum, pmode, smart):
 		keyWord = "view"
 		autosum = 1
 		pmode = 0

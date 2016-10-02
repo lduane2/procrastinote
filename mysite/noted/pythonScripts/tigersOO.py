@@ -15,12 +15,12 @@ text_to_speech = TextToSpeechV1(
                                 password='vLhtWWtffVLB'
                                 #x_watson_learning_opt_out=True
                                 )  # Optional flag
-class tigers(filename):
-    def __init__(self):
+class tigers():
+    def __init__(self,filename):
         config = {'conversion_target': DocumentConversionV1.ANSWER_UNITS}
         #
         # Example with JSON
-        with open(join(dirname(__file__), filename), 'r') as document:
+        with open(filename, 'r') as document:
             config['conversion_target'] = DocumentConversionV1.ANSWER_UNITS
             hello = document_conversion.convert_document(document=document, config=config)
             hello2 = hello["answer_units"][0]["content"][0]["text"]
