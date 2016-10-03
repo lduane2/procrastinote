@@ -18,14 +18,14 @@
         {% block cdn_css %}
         {% endblock cdn_css %}
 
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Open+Sans|Raleway" rel="stylesheet">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
         <link rel="stylesheet" href="{% static 'font-awesome/css/font-awesome.min.css' %}">
         {% block css %}
         {% endblock %}
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     </head>
     <body "{% block body_class %}{% endblock %}" {% block body_attributes %}{% endblock %}>
-        {% block body %}
+    {% block body %}
         <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <!-- toggle grouped (for mobile display) -->
@@ -43,15 +43,15 @@
             <!-- links -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/noted/list/">List Files</a></li>
                     <li><a href="/noted/upload/">Upload a File</a></li>
+                    <li><a href="/noted/list/">List Files</a></li>
                 </ul>
             </div>
         </div>
         </nav>
 
         <header>
-        <img class="fit" src="{% static 'img/background.png' %}" alt="background"/>
+        <img class="fit header-img" src=""/>
         <div class="jumbotron">
             <h2>{% block jumbotron_name %}{% endblock %}</h2>
             <p><h4><small>{% block jumbotron_description %}{% endblock %}</small></h4></p>
@@ -60,7 +60,7 @@
         </header>
 
         <section>
-        <div class="center-text container">
+        <div class="container">
             {% block content %}{% endblock %}
         </div>
         </section>
@@ -75,19 +75,35 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="{{ STATIC_URL }}js/libs/jquery-2.1.1.min.js"><\/script>')</script>
-            {% block cdn_js %}
-            {% endblock cdn_js %}
+        {% block cdn_js %}
+        {% endblock cdn_js %}
 
-            <script src="{% static 'js/bootstrap.min.js' %}"></script>
-            {% block js %}
-            {% endblock js %}
+        <script src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/bootstrap-filestyle.min.js' %}"></script>
+        {% block js %}
+        {% endblock %}
 
-            <script>
-                var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-                (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-                    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-                    s.parentNode.insertBefore(g,s)}(document,'script'));
-            </script>
-            {% endblock %}
-        </body>
-    </html>
+        <script>
+        $(window).on("resize", function() {
+            if ($(window).width() >= 1100) {
+                $(".header-img").attr("src", "{% static 'img/background-520.png' %}");
+            } else if ($(window).width() >= 1000) {
+                $(".header-img").attr("src", "{% static 'img/background-600.png' %}");
+            } else if ($(window).width() >= 900) {
+                $(".header-img").attr("src", "{% static 'img/background-680.png' %}");
+            } else if ($(window).width() >= 800) {
+                $(".header-img").attr("src", "{% static 'img/background-760.png' %}");
+            } else if ($(window).width() >= 700) {
+                $(".header-img").attr("src", "{% static 'img/background-840.png' %}");
+            } else if ($(window).width() >= 600) {
+                $(".header-img").attr("src", "{% static 'img/background-920.png' %}");
+            } else if ($(window).width() >= 500) {
+                $(".header-img").attr("src", "{% static 'img/background-1000.png' %}");
+            } else {
+                $(".header-img").attr("src", "{% static 'img/background-1080.png' %}");
+            }
+        }).resize();
+        </script>
+    {% endblock %}
+    </body>
+</html>

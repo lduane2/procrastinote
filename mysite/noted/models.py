@@ -7,11 +7,11 @@ import time
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils import timezone
+from django.db.models.signals import pre_delete
+from django.dispatch.dispatcher import receiver
 
 def file_path(instance,filename):
-    date = instance.upload_date
-    str(date)
-    date = date.strftime('%Y-%m-%dT%H%M%S')
+    date = instance.upload_date.strftime('%Y-%m-%dT%H%M%S')
     instance.stored_name = instance.file_name.replace(" ","_")+'_'+date
     instance.file_path = 'noted/uploads/'+instance.stored_name+'.pdf'
     return instance.file_path
@@ -22,6 +22,10 @@ class UploadedFile(models.Model):
     file_contents = models.FileField(upload_to=file_path)
     stored_name = models.CharField(max_length=300)
     file_path = models.CharField(max_length=400)
-
     def __str__(self):
         return self.file_name
+
+@receiver(pre_delete,sender=UploadedFile)
+def mymodel_delete(sender, instance, **kwargs):
+    if (instance.file_contents):
+        instance.file_contents.delete(False)
