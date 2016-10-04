@@ -22,11 +22,11 @@ class consolidate():
                     if(count != 0):
                         if(currline == 2):
                             f1.write(lines)
-                            f1.write('. ')
+                            #f1.write('. ')
                             currline = 0
                         if(len(lines) == 2):
                             f1.write(line2)
-                            f1.write('. ')
+                            #f1.write('. ')
                             f1.write('\n')
                             currline = 2
                         line2 = lines
@@ -51,7 +51,7 @@ class consolidate():
                             topp = 0
                         else:
                             f1.write(lines)
-                            f1.write('. ')
+                            #f1.write('. ')
                     if(topp == 1):
                         if(lines.find(keyword) != -1):
                             topp = 3
@@ -61,10 +61,10 @@ class consolidate():
                         topp = 1
                     if (lines.find(keyword) != -1):
                         f1.write(lines)
-                        f1.write('. ')
+                        #f1.write('. ')
             else: #none
                 for lines in document:
                     f1.write(lines)
-                    f1.write('. ')
+                    #f1.write('. ')
 
             f1.close()

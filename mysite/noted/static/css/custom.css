@@ -21,11 +21,11 @@ header {
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Raleway', sans-serif;
 }
 
 .jumbotron {
-    max-height: 200px;
+    max-height: 175px;
 }
 @media(min-width:768px) {
     .jumbotron {
@@ -36,17 +36,4 @@ body {
 .center {
     margin: 10px auto;
     width: 320px;}
-}
-
-.center-text {
-    margin: auto;
-    width: 80%;
-    padding: 10px;
-}
-@media(min-width:768px) {
-    .center-text {
-        margin: auto;
-        width: 75%;
-        padding: 10px;
-    }
 }

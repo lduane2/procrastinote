@@ -48,8 +48,6 @@ def detail(request,upload_id):
     upload = get_object_or_404(UploadedFile, pk=upload_id)
     uf = UploadedFile.objects.raw('SELECT * FROM noted_uploadedfile WHERE id='+upload_id)
     if request.method == 'POST':
-        mode = -1
-        keyword=""
         if request.POST.get("keyword",""):
             keyword = request.POST.get("keyword","")
             if request.POST.get("sentence",""):
@@ -60,16 +58,18 @@ def detail(request,upload_id):
                 mode = 3
         elif request.POST.get("auto", ""):
             mode = 1
+        else:
+            mode = -1
 
         if request.POST.get("reset","") or mode == -1:
             with open(uf[0].file_path, 'r') as document:
                 config = {'conversion_target': DocumentConversionV1.NORMALIZED_HTML}
                 response = document_conversion.convert_document(document=document, config=config).content
-                try:
-                    m = re.search('<body>(.*)</body>', response)
-                    contents = m.group(1)
-                except:
-                    contents = response
+                #try:
+                #    m = re.search('<body>(.*)</body>', response)
+                #    contents = m.group(1)
+                #except:
+                contents = response
         else:
             consolidate(mode=mode,keyword=keyword)
             with open('noted/pythonScripts/consolidate.txt', 'r') as document:

@@ -27,12 +27,12 @@ Prints out sentences where keyword is found, and paragraphs where keyword is in 
 Auto-Summary
 ==============================
 
-Prints out the first and last sentence of evry paragraph.
+Prints out the first and last sentence of every paragraph.
 
 Original Text
 ===============================
 
-Return to original document
+Return to original document.
 
 
 Speak Text Options
@@ -45,7 +45,7 @@ Speak Text Options
 
 Developers:
 
-Nick Carroll
+Ann Keenan
 Luke Duane
 Marco Bruscia
-Ann Keenan
+Nick Carroll

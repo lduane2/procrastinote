@@ -1,12 +1,14 @@
 {% extends "_layouts/base.html" %}
 
 {% block page_title %}Home{% endblock %}
-{% block page_class %}home-page{% endblock %}
+{% block page_class %}index{% endblock %}
 
 {% block jumbotron_name %}Noted{% endblock %}
-{% block jumbotron_description %}Upload your files and hear them aloud.{% endblock %}
+{% block jumbotron_description %}Upload your notes for quicker and more effective studying.{% endblock %}
 
 {% block content %}
+<h3>About</h3>
+
 <div class="btn-group btn-group-justified" role="group" aria-label="...">
     <div class="btn-group" role="group">
         <button type="button" class="btn btn-default" onClick="location.href='/noted/list/'">List Files</button>
